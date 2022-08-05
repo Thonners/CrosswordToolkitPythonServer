@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "crosswordtoolkitserver"
+version = "0.1.0"
+description = "Python based server for Crossword Toolkit"
+authors = ["Mathonwy Thomas <mathonwy.thomas@gmail.com>"]
+license = "GPL 3.0"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+black = "^22.6.0"
+Django = "^4.1"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
