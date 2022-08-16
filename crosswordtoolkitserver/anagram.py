@@ -13,7 +13,7 @@ def get_letter_combos(letters: str, length_of_word: int) -> str:
                 letters[i + 1 :], length_of_word - 1
             ):
                 # Yield this letter plus all the combos of the remaining letters
-                yield letters[i] + l
+                yield letters[i] + remaining_letters
         else:
             # If there's only 1 letter in the word, just return the letter!
             yield letters[i]
