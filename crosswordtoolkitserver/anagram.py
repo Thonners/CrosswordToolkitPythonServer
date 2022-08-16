@@ -29,5 +29,5 @@ def get_all_possible_words(letters: str, lengths: list[int]) -> list[str]:
         if len(lengths) == 2:
             yield [first_word, other_letters]
         elif len(lengths) > 2:
-            for other_words in get_letter_combos(other_letters, lengths[1:]):
+            for other_words in get_all_possible_words(other_letters, lengths[1:]):
                 yield [first_word, *other_words]
