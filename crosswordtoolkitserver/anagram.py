@@ -31,3 +31,13 @@ def get_all_possible_words(letters: str, lengths: list[int]) -> list[str]:
         elif len(lengths) > 2:
             for other_words in get_all_possible_words(other_letters, lengths[1:]):
                 yield [first_word, *other_words]
+
+
+def get_possible_words_no_repeats(letters: str, lengths: list[int]) -> list[str]:
+    all_possible_words = get_all_possible_words(letters, lengths)
+    word_sets = []
+    for word_set in all_possible_words:
+        sorted_words = sorted(word_set)
+        if sorted_words not in word_sets:
+            word_sets.append(sorted_words)
+    return word_sets

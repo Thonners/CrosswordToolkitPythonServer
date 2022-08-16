@@ -1,4 +1,9 @@
-from ..anagram import get_remaining_letters, get_letter_combos, get_all_possible_words
+from ..anagram import (
+    get_remaining_letters,
+    get_letter_combos,
+    get_all_possible_words,
+    get_possible_words_no_repeats,
+)
 
 
 def test_remaining_letters():
@@ -82,3 +87,19 @@ def test_get_all_three_words():
         ["c", "a", "b"],
         ["c", "b", "a"],
     ] == list(get_all_possible_words(all_letters, lengths))
+
+
+def test_get_words_no_repeats():
+    letters = "abc"
+    lengths = [1, 1, 1]
+    assert [["a", "b", "c"]] == get_possible_words_no_repeats(letters, lengths)
+    letters = "abcd"
+    lengths = [1, 1, 2]
+    assert [
+        ["a", "b", "cd"],
+        ["a", "bd", "c"],
+        ["a", "bc", "d"],
+        ["ad", "b", "c"],
+        ["ac", "b", "d"],
+        ["ab", "c", "d"],
+    ] == get_possible_words_no_repeats(letters, lengths)
