@@ -1,7 +1,7 @@
 def get_remaining_letters(letters: str, letters_to_be_removed: str) -> str:
     other_letters = letters
     for letter in letters_to_be_removed:
-        other_letters.replace(letter, "")
+        other_letters = other_letters.replace(letter, "", 1)
     return other_letters
 
 
