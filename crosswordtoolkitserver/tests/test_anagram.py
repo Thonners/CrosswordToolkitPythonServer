@@ -17,6 +17,12 @@ def test_remaining_letters_with_repeats():
     assert "defa" == get_remaining_letters(all_letters, "aaabc")
     assert "defa" == get_remaining_letters(all_letters, "abcaa")
     assert "abcfaaa" == get_remaining_letters(all_letters, "de")
+    all_letters = "aaabcdef"
+    assert "aadef" == get_remaining_letters(all_letters, "abc")
+    assert "adef" == get_remaining_letters(all_letters, "abca")
+    assert "def" == get_remaining_letters(all_letters, "aaabc")
+    assert "def" == get_remaining_letters(all_letters, "abcaa")
+    assert "aaabcf" == get_remaining_letters(all_letters, "de")
 
 
 def test_get_letter_combos_short():
