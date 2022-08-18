@@ -1,6 +1,6 @@
 class AnagramSolver:
-    def __init__(self) -> None:
-        pass
+    def __init__(self, dictionary) -> None:
+        self.dictionary = dictionary
 
     def get_remaining_letters(self, letters: str, letters_to_be_removed: str) -> str:
         other_letters = letters
@@ -28,6 +28,8 @@ class AnagramSolver:
             )
         for first_word in self.get_letter_combos(letters, lengths[0]):
             other_letters = self.get_remaining_letters(letters, first_word)
+            if len(lengths) == 1:
+                yield [first_word]
             if len(lengths) == 2:
                 yield [first_word, other_letters]
             elif len(lengths) > 2:
@@ -46,3 +48,18 @@ class AnagramSolver:
             if sorted_words not in word_sets:
                 word_sets.append(sorted_words)
         return word_sets
+
+    def get_anagrams(self, letters: str, lengths: list[int]) -> list[str]:
+        if not lengths:
+            lengths = [len(letters)]
+        sorted_letters = self.dictionary.sort_letters(letters)
+        possible_word_sets = self.get_possible_words_no_repeats(sorted_letters, lengths)
+        anagrams = []
+        for word_set in possible_word_sets:
+            legit_anagram = True
+            for word in word_set:
+                if word not in self.dictionary.anagram[len(word)]:
+                    legit_anagram = False
+            if legit_anagram:
+                anagrams.append(self.dictionary.anagram[len(word)][word])
+        return anagrams
