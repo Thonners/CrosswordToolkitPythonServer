@@ -11,6 +11,7 @@ class AnagramSolver:
     def get_letter_combos(self, letters: str, length_of_word: int) -> str:
         if len(letters) == 0:
             return
+        letters = letters.lower()
         for i in range(len(letters) - length_of_word + 1):
             if length_of_word > 1:
                 # Until we're on the final letter, iterate recursively over the remaining letters and their combos
@@ -28,6 +29,7 @@ class AnagramSolver:
             raise ValueError(
                 f"Mismatch between number of letters ({len(letters)}) and length of requested answers: {lengths}"
             )
+        letters = letters.lower()
         for first_word in self.get_letter_combos(letters, lengths[0]):
             other_letters = self.get_remaining_letters(letters, first_word)
             if len(lengths) == 1:
@@ -43,6 +45,7 @@ class AnagramSolver:
     def get_possible_words_no_repeats(
         self, letters: str, lengths: list[int]
     ) -> list[str]:
+        letters = letters.lower()
         all_possible_words = self.get_all_possible_words(letters, lengths)
         word_sets = []
         for word_set in all_possible_words:
@@ -54,6 +57,7 @@ class AnagramSolver:
     def get_anagrams(self, letters: str, lengths: list[int]) -> list[str]:
         if not lengths:
             lengths = [len(letters)]
+        letters = letters.lower()
         sorted_letters = self.dictionary.sort_letters(letters)
         possible_word_sets = self.get_possible_words_no_repeats(sorted_letters, lengths)
         anagrams = []

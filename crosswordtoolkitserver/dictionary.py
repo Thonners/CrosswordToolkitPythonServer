@@ -23,7 +23,7 @@ class CrosswordToolkitDictionary:
             )
             with open(filepath, "r") as file:
                 json_words = json.load(file)
-                self.words[i] = [word["word"] for word in json_words]
+                self.words[i] = [word["word"].lower() for word in json_words]
                 self.anagram[i] = {}
                 for word in self.words[i]:
                     sorted_letters = self.sort_letters(word)

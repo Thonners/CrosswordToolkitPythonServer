@@ -124,7 +124,7 @@ def test_get_anagram():
     letters = "a"
     assert [["a"]] == anagram_solver.get_anagrams(letters, None)
     letters = "I"
-    assert [["I"]] == anagram_solver.get_anagrams(letters, None)
+    assert [["i"]] == anagram_solver.get_anagrams(letters, None)
     letters = "c"
     assert [[]] == anagram_solver.get_anagrams(letters, None)
 
