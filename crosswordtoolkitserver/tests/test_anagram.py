@@ -1,12 +1,8 @@
-from ..anagram import (
-    AnagramSolver,
-    # get_remaining_letters,
-    # get_letter_combos,
-    # get_all_possible_words,
-    # get_possible_words_no_repeats,
-)
+from ..anagram import AnagramSolver
+from ..dictionary import CrosswordToolkitDictionary
 
-anagram_solver = AnagramSolver()
+dictionary = CrosswordToolkitDictionary()
+anagram_solver = AnagramSolver(dictionary)
 
 
 def test_remaining_letters():
@@ -56,6 +52,14 @@ def test_get_letter_combos_longer():
         "bde",
         "cde",
     ] == list(anagram_solver.get_letter_combos(all_letters, 3))
+
+
+def test_get_all_one_words():
+    all_letters = "abc"
+    lengths = [3]
+    assert [["abc"]] == list(
+        anagram_solver.get_all_possible_words(all_letters, lengths)
+    )
 
 
 def test_get_all_two_words():
