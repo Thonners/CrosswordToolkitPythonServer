@@ -16,7 +16,7 @@ class CrosswordToolkitDictionary:
     def load_words(self):
         self.words = {}
         self.anagram = {}
-        for i in range(2, 16):
+        for i in range(1, 16):
             this_script_path = Path(__file__)
             filepath = Path(
                 this_script_path.parent, "static", "words", f"{i}-letter-words.json"
