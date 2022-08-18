@@ -9,6 +9,8 @@ class AnagramSolver:
         return other_letters
 
     def get_letter_combos(self, letters: str, length_of_word: int) -> str:
+        if len(letters) == 0:
+            return
         for i in range(len(letters) - length_of_word + 1):
             if length_of_word > 1:
                 # Until we're on the final letter, iterate recursively over the remaining letters and their combos
@@ -62,4 +64,7 @@ class AnagramSolver:
                     legit_anagram = False
             if legit_anagram:
                 anagrams.append(self.dictionary.anagram[len(word)][word])
+        if len(anagrams) == 0:
+            # Add an empty list so there's always something in anagrams[0]
+            anagrams.append([])
         return anagrams
