@@ -121,5 +121,23 @@ def test_get_anagram():
     assert [["brush", "buhrs", "shrub"]] == anagram_solver.get_anagrams(letters, None)
     letters = "sss"
     assert [[]] == anagram_solver.get_anagrams(letters, None)
+    letters = "a"
+    assert [["a"]] == anagram_solver.get_anagrams(letters, None)
+    letters = "I"
+    assert [["i"]] == anagram_solver.get_anagrams(letters, None)
+    letters = "c"
+    assert [[]] == anagram_solver.get_anagrams(letters, None)
+
+
+def test_anagram_illegal_input():
     letters = ""
     assert [[]] == anagram_solver.get_anagrams(letters, None)
+    letters = "£"
+    assert [[]] == anagram_solver.get_anagrams(letters, None)
+
+
+def test_anagram_caps():
+    letters = "BAT"
+    assert [["bat", "tab"]] == anagram_solver.get_anagrams(letters, None)
+    letters = "shRuB"
+    assert [["brush", "buhrs", "shrub"]] == anagram_solver.get_anagrams(letters, None)
