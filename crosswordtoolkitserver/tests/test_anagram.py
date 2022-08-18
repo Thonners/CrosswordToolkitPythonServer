@@ -134,6 +134,8 @@ def test_anagram_illegal_input():
     assert [[]] == anagram_solver.get_anagrams(letters, None)
     letters = "£"
     assert [[]] == anagram_solver.get_anagrams(letters, None)
+    letters = "te.st"
+    assert [[]] == anagram_solver.get_anagrams(letters, None)
 
 
 def test_anagram_caps():
