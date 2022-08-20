@@ -112,6 +112,12 @@ def test_get_words_no_repeats():
         ["ac", "b", "d"],
         ["ab", "c", "d"],
     ] == anagram_solver.get_possible_words_no_repeats(letters, lengths)
+    letters = "batball"
+    lengths = [3, 4]
+
+    assert [["bat", "ball"]] == anagram_solver.get_possible_words_no_repeats(
+        letters, lengths
+    )
 
 
 def test_get_anagram():
@@ -143,3 +149,8 @@ def test_anagram_caps():
     assert [["bat", "tab"]] == anagram_solver.get_anagrams(letters, None)
     letters = "shRuB"
     assert [["brush", "buhrs", "shrub"]] == anagram_solver.get_anagrams(letters, None)
+
+
+def test_anagram_multi_word():
+    letters = "batball"
+    assert [[["ball"], ["bat", "tab"]]] == anagram_solver.get_anagrams(letters, [3, 4])
