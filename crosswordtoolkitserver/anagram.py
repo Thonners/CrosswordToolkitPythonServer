@@ -1,5 +1,9 @@
+from typing import Generator
+from .dictionary import CrosswordToolkitDictionary
+
+
 class AnagramSolver:
-    def __init__(self, dictionary) -> None:
+    def __init__(self, dictionary: CrosswordToolkitDictionary) -> None:
         self.dictionary = dictionary
 
     def get_remaining_letters(self, letters: str, letters_to_be_removed: str) -> str:
@@ -8,7 +12,7 @@ class AnagramSolver:
             other_letters = other_letters.replace(letter, "", 1)
         return other_letters
 
-    def get_letter_combos(self, letters: str, length_of_word: int) -> str:
+    def get_letter_combos(self, letters: str, length_of_word: int) -> Generator:
         if len(letters) == 0:
             return
         letters = letters.lower()
@@ -24,7 +28,7 @@ class AnagramSolver:
                 # If there's only 1 letter in the word, just return the letter!
                 yield letters[i]
 
-    def get_all_possible_words(self, letters: str, lengths: list[int]) -> list[str]:
+    def get_all_possible_words(self, letters: str, lengths: list[int]) -> Generator:
         if sum(lengths) != len(letters):
             raise ValueError(
                 f"Mismatch between number of letters ({len(letters)}) and length of requested answers: {lengths}"
@@ -44,7 +48,7 @@ class AnagramSolver:
 
     def get_possible_words_no_repeats(
         self, letters: str, lengths: list[int]
-    ) -> list[str]:
+    ) -> list[list[str]]:
         letters = letters.lower()
         all_possible_words = self.get_all_possible_words(letters, lengths)
         word_sets = []
