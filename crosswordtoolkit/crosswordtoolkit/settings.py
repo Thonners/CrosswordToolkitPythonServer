@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-&$t^wyh)mx(@k^j0zk@91$o%8gl87r@*b*b3tkn&zp*1uhuar7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["crosswordtoolkit.mathonwythomas.com"]
 
 
 # Application definition
