@@ -50,12 +50,14 @@ class CrosswordToolkitDictionary:
             for potential_word in combo:
                 word_length = len(potential_word)
                 if potential_word in self.anagram[word_length]:
-                    word_anagrams.append(self.anagram[word_length][potential_word])
+                    word_anagrams.append(tuple(self.anagram[word_length][potential_word]))
                 else:
                     is_anagram = False
             if is_anagram:
                 anagrams.append(word_anagrams)
-        return anagrams
+        # Loop through to remove any duplicates which can occur there are multiple words of the same length
+        sorted_anagrams = tuple(tuple(sorted(ags)) for ags in anagrams)
+        return set(sorted_anagrams)
 
 
 
@@ -76,7 +78,7 @@ class CrosswordToolkitDictionary:
                 remaining_letters = remaining_letters.replace(letter,"",1)
             remaining_words = word_lengths[1:]
             output.append((first_word, self.get_letter_combos(remaining_letters, remaining_words)))
-        return set(output)
+        return tuple(set(output))
     
     def get_anagrams(self, letters:str):
         try:
